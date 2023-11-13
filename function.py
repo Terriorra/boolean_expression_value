@@ -12,6 +12,20 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
+path = resource_path('support')
+with open(path, 'r', encoding='utf-8') as f:
+    support = f.read().split('\n')
+
+
+path = resource_path('susses')
+with open(path, 'r', encoding='utf-8') as f:
+    susses = f.read().split('\n')
+
+path = resource_path('about')
+with open(path, 'r', encoding='utf-8') as f:
+    cup = f.read()
+
+
 class Quest:
     def __init__(self, text, ans):
         self.text = text
@@ -36,17 +50,17 @@ def task_1(text, var):
     x = 0
 
     match var:
-        case 1:
+        case 2:
             for x in range(101, 0, -1):
                 if eval(exp):
                     break
 
-        case 2:
+        case 3:
             for x in range(1, 101):
                 if eval(exp):
                     break
 
-        case 3:
+        case 1:
             x = randint(1, 100)
             text += f'\nпри x = {x}:\n'
             x = eval(exp)
@@ -57,18 +71,18 @@ def task_1(text, var):
 def create_var(var):
     q = ''
     match var:
-        case 1:
+        case 2:
             text = 'Напишите наибольшее целое число x, для которого истинно высказывание:\n'
             q = task_1(text, var)
             while (q.ans == 100) or (q.ans == 1) or (q.ans == 101):
                 q = task_1(text, var)
-        case 2:
+        case 3:
             text = 'Напишите наименьшее целое число x, для которого истинно высказывание:\n'
             q = task_1(text, var)
             while (q.ans == 100) or (q.ans == 1) or (q.ans == 101):
                 q = task_1(text, var)
-        case 3:
-            text = 'Определите истинность высказывания:\n'
+        case 1:
+            text = 'Определите истинность высказывания [True/False]:\n'
             q = task_1(text, var)
 
     return q
