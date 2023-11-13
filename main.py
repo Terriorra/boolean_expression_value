@@ -16,8 +16,13 @@ for var in range(1, 4):
     right = 0
     while right < n:
         a = create_var(var)
+        print(f'Осталось решить {n - right}.')
+        print(f'Раздел: {var}.')
+        print(f'Текущая оценка {grade}.')
+        print(20 * '=' + '\n')
         print(a.text)
         ant = input('Введите ответ: ').strip()
+        print()
         if ant == str(a.ans):
             print(f"Верно, {name}!")
             print(choice(susses))
@@ -27,9 +32,7 @@ for var in range(1, 4):
             print(choice(support))
             right = 0
 
-        print(f'Осталось решить {n - right}.')
-        print(f'Текущая оценка {grade}.')
-        input('Для продолжения нажмите enter...')
+        input('\nДля продолжения нажмите enter...')
 
     print("Раздел завершен.")
     grade += 1
